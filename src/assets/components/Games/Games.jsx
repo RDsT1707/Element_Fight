@@ -1,16 +1,21 @@
 import { useState } from "react";
 import "./PokemonGame.css";
 
+import pokeballImg from "./assets/img/pokeball-transparent-png-2.png";
+import salamècheImg from "./assets/img/salamèche.png";
+import carapuceImg from "./assets/img/carapuce.png";
+import bulbizarreImg from "./assets/img/001.webp";
+
 const POKEBALLS = {
-  feu: "/src/assets/img/pokeball-transparent-png-2.png",
-  eau: "/src/assets/img/pokeball-transparent-png-2.png",
-  plante: "/src/assets/img/pokeball-transparent-png-2.png",
+  feu: pokeballImg,
+  eau: pokeballImg,
+  plante: pokeballImg,
 };
 
 const POKEMONS = {
-  feu: "/src/assets/img/salamèche.png",
-  eau: "/src/assets/img/carapuce.png",
-  plante: "/src/assets/img/001.webp",
+  feu: salamècheImg,
+  eau: carapuceImg,
+  plante: bulbizarreImg,
 };
 
 const POKEMON_NAMES = {
@@ -68,61 +73,61 @@ export default function PokemonGame() {
 
   return (
     <div className="pokemon-game-container">
-  <h1>ELEMENTS FIGHT</h1>
-  <div className="score">Score : {score}</div>
+      <h1>ELEMENTS FIGHT</h1>
+      <div className="score">Score : {score}</div>
 
-  {étapeJeu === "selection" && (
-    <div>
-      <h2>Choisis ta Pokéball</h2>
-      <div className="choices">
-        {CHOIX.map((type) => (
-          <div key={type} onClick={() => gérerChoix(type)}>
-            <img
-              className="pokeball"
-              src={POKEBALLS[type]}
-              alt={`Pokéball ${type}`}
-            />
-            <div>{POKEMON_NAMES[type]}</div>
+      {étapeJeu === "selection" && (
+        <div>
+          <h2>Choisis ta Pokéball</h2>
+          <div className="choices">
+            {CHOIX.map((type) => (
+              <div key={type} onClick={() => gérerChoix(type)}>
+                <img
+                  className="pokeball"
+                  src={POKEBALLS[type]}
+                  alt={`Pokéball ${type}`}
+                />
+                <div>{POKEMON_NAMES[type]}</div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-  )}
+        </div>
+      )}
 
-  {(étapeJeu === "duel" || étapeJeu === "résultat") && (
-    <div className="duel">
-      <div>
-        <h3>Toi</h3>
-        <img className="pokemon" src={POKEMONS[choixJoueur]} alt={choixJoueur} />
-        <p>{POKEMON_NAMES[choixJoueur]}</p>
-      </div>
-      <div className="versus">VS</div>
-      <div>
-        <h3>Adversaire</h3>
-        {choixOrdi ? (
-          <>
-            <img className="pokemon" src={POKEMONS[choixOrdi]} alt={choixOrdi} />
-            <p>{POKEMON_NAMES[choixOrdi]}</p>
-          </>
-        ) : (
-          <p>...</p>
-        )}
-      </div>
-    </div>
-  )}
+      {(étapeJeu === "duel" || étapeJeu === "résultat") && (
+        <div className="duel">
+          <div>
+            <h3>Toi</h3>
+            <img className="pokemon" src={POKEMONS[choixJoueur]} alt={choixJoueur} />
+            <p>{POKEMON_NAMES[choixJoueur]}</p>
+          </div>
+          <div className="versus">VS</div>
+          <div>
+            <h3>Adversaire</h3>
+            {choixOrdi ? (
+              <>
+                <img className="pokemon" src={POKEMONS[choixOrdi]} alt={choixOrdi} />
+                <p>{POKEMON_NAMES[choixOrdi]}</p>
+              </>
+            ) : (
+              <p>...</p>
+            )}
+          </div>
+        </div>
+      )}
 
-  {étapeJeu === "résultat" && (
-    <div>
-      <h2>
-        {résultat === "GAGNÉ"
-          ? "Tu as gagné !"
-          : résultat === "PERDU"
-          ? "Tu as perdu..."
-          : "Égalité"}
-      </h2>
-      <button onClick={rejouer}>Rejouer</button>
-    </div>
-  )}
+      {étapeJeu === "résultat" && (
+        <div>
+          <h2>
+            {résultat === "GAGNÉ"
+              ? "Tu as gagné !"
+              : résultat === "PERDU"
+              ? "Tu as perdu..."
+              : "Égalité"}
+          </h2>
+          <button onClick={rejouer}>Rejouer</button>
+        </div>
+      )}
     </div>
   );
 }
