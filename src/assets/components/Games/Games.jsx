@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "./PokemonGame.css";
 
-import pokeballImg from "./assets/img/pokeball-transparent-png-2.png";
-import salamècheImg from "./assets/img/salamèche.png";
-import carapuceImg from "./assets/img/carapuce.png";
-import bulbizarreImg from "./assets/img/001.webp";
+
+import pokeballImg from "../../img/pokeball-transparent-png-2.png";
+import salamècheImg from "../../img/salamèche.png";
+import carapuceImg from "../../img/carapuce.png";
+import bulbizarreImg from "../../img/001.webp";
 
 const POKEBALLS = {
   feu: pokeballImg,
